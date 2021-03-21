@@ -46,9 +46,9 @@ void loop() {
 
   
 
-  AccX = (Wire.read() * 256 + Wire.read()) / 16384.0; // X-axis value
-  AccY = (Wire.read() * 256 + Wire.read()) / 16384.0; // Y-axis value
-  AccZ = (Wire.read() * 256 + Wire.read()) / 16384.0; // Z-axis value
+  AccX = (Wire.read() * 256 + Wire.read()) / 4096.0; // X-axis value
+  AccY = (Wire.read() * 256 + Wire.read()) / 4096.0; // Y-axis value
+  AccZ = (Wire.read() * 256 + Wire.read()) / 4096.0; // Z-axis value
   
   accAngleX = (atan(AccY / sqrt(pow(AccX, 2) + pow(AccZ, 2))) * 180 / PI) - 0.58; // AccErrorX ~(0.58) See the calculate_IMU_error()custom function for more details
   accAngleY = (atan(-1 * AccX / sqrt(pow(AccY, 2) + pow(AccZ, 2))) * 180 / PI) + 1.58; // AccErrorY ~(-1.58)
@@ -65,9 +65,9 @@ void loop() {
   Wire.write(0x43);
   Wire.endTransmission();
   Wire.requestFrom(MPU, 6); 
-  GyroX = (Wire.read() * 256 + Wire.read()) / 131.0;
-  GyroY = (Wire.read() * 256 + Wire.read()) / 131.0;
-  GyroZ = (Wire.read() * 256 + Wire.read()) / 131.0;
+  GyroX = (Wire.read() * 256 + Wire.read()) / 32.8;
+  GyroY = (Wire.read() * 256 + Wire.read()) / 32.8;
+  GyroZ = (Wire.read() * 256 + Wire.read()) / 32.8;
 
 
   // Handling Errors
